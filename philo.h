@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 00:38:16 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 05:17:39 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define STR_ERR_INPUT_DIGIT "Error : input must be a digit"
 # define STR_ERR_INPUT_POFLOW "Error : number of philosophers is out of range"
 # define STR_MAX_PHILOS "Max number of philosophers exceeded"
-# define MAX_PHILOS 2
+# define MAX_PHILOS 250
 # define STR_USAGE "%s note : ./philo <num_of_philosophers> \
 <time_to_die> <time_to_eat> <time_to_sleep> \
 [num_of_times_each_philo_must_eat]\n"
@@ -102,6 +102,7 @@ t_list		*list_creation(char **av, t_donnee **donner);
 uint64_t		time_in_ms(void);
 int	death_status(t_mouvmt *philo);
 int	eating_status(t_mouvmt *philo);
+int	verify_valu(int ac, t_donnee *donner);
 uint64_t time_in_milis(void);
 
 #endif
