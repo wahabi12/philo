@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 06:44:08 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 00:40:41 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 09:20:02 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,37 +37,6 @@ int	death_eating_status(t_mouvmt *philo, t_check_type type)
 	else
 		return (1);
 }
-
-/* int	death_status(t_mouvmt *philo)
-{
-	pthread_mutex_lock(&philo->donner->verify_if_death);
-	if (philo->donner->death_statu == 0)
-	{
-		pthread_mutex_unlock(&philo->donner->verify_if_death);
-		return (0);
-	}
-	else
-	{
-		pthread_mutex_unlock(&philo->donner->verify_if_death);
-		return (1);
-	}
-}
-
-int	eating_status(t_mouvmt *philo)
-{
-	pthread_mutex_lock(&philo->donner->food_to_eat);
-	if (philo->donner->max_food_to_eat == 0)
-	{
-		pthread_mutex_unlock(&philo->donner->food_to_eat);
-		return (0);
-	}
-	else
-	{
-		pthread_mutex_unlock(&philo->donner->food_to_eat);
-		return (1);
-	}
-} */
-
 
 int	verify_max_food_eaten(t_mouvmt *philo)
 {

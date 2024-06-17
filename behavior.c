@@ -6,13 +6,13 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 01:22:22 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 03:14:05 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 09:18:51 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* void	for_one_philo(t_mouvmt *philo)
+void	for_one_philo(t_mouvmt *philo)
 {
 	uint64_t	cur_time;
 
@@ -20,11 +20,11 @@
 	{
 		pthread_mutex_lock(&philo->right_fork);
 		cur_time = time_in_milis();
-		printf("%llu %d has taken a fork\n");
+		printf("%llu %d has taken a fork\n", cur_time - philo->donner->time_to_start, philo->num_philo);
 	}
-} */
+}
 
-/* void philo_that_think(t_mouvmt *philo)
+void philo_that_think(t_mouvmt *philo)
 {
     int num_philo = philo->num_philo;
     int total_philo = philo->donner->num_of_philosophers;
@@ -36,7 +36,7 @@
         ft_usleep(1);
     }
 }
- */
+
 
 void	philo_thinking(t_mouvmt *philo)
 {
@@ -53,21 +53,55 @@ void	philo_thinking(t_mouvmt *philo)
 	}
 }
 
-int main(void)
+void	*routine(void *arg)
 {
+	t_mouvmt	*philo;
+
+	philo = (t_mouvmt *)arg;
+	philo_that_think(philo);
+	while (death_eating_status(philo, CHECK_MEALS_EATEN) != 0
+		&& death_eating_status(philo, CHECK_DEATH_STATUS) == 0
+		&& (philo->donner->num_of_philosophers != 1))
+	{
+		if (last_verification(philo) == 1)
+			return (NULL);
+		    eating(philo);
+		if (last_verification(philo) == 1)
+			return (NULL);
+		he_sleep(philo);
+		if (last_verification(philo) == 1)
+			return (NULL);
+/* 		thinkig(philo);
+		if (last_verification(philo) == 1)
+			return (NULL); */
+	}
+	for_one_philo(philo);
+	return (arg);
+}
+
+
+int main() {
+    // Exemple d'initialisation des données communes
     t_donnee donner;
-    t_mouvmt philo;
-
-    // Initialize donner
-    donner.num_of_philosophers = 5; // Example value
-    donner.time_to_start = (uint64_t)time(NULL) * 1000;
-
-    // Initialize philosopher
-    philo.num_philo = 2; // Example value
-    philo.donner = &donner;
-
-    // Test the philo_that_think function
-    philo_thinking(&philo);
-
+    donner.num_of_philosophers = 5; // Exemple: 5 philosophes
+    
+    // Exemple d'initialisation des philosophes
+    t_mouvmt philos[5];
+    for (int i = 0; i < 5; i++) {
+        philos[i].donner = &donner;
+        // Initialisation d'autres membres du philosophe si nécessaire
+    }
+    
+    // Exemple de création des threads pour chaque philosophe
+    pthread_t threads[5];
+    for (int i = 0; i < 5; i++) {
+        pthread_create(&threads[i], NULL, routine, &philos[i]);
+    }
+    
+    // Attente de la fin de tous les threads
+    for (int i = 0; i < 5; i++) {
+        pthread_join(threads[i], NULL);
+    }
+    
     return 0;
 }
