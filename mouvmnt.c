@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 11:05:14 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 02:29:58 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 03:14:43 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	he_sleep(t_mouvmt *philo)
 	pthread_mutex_lock(&philo->donner->afficher);
 	printf("Before calling sleping function3\n");
 	message(philo, "is sleeping");
-	printf("Before calling sleping function3\n");
+	printf("after calling sleping function3\n");
 	pthread_mutex_unlock(&philo->donner->afficher);
 	ft_usleep(philo->donner->time_to_sleep);
 }
@@ -27,7 +27,7 @@ void	thinkig(t_mouvmt *philo)
 	pthread_mutex_lock(&philo->donner->afficher);
 	printf("Before calling thinking function2\n");
 	message(philo, "is thinking");
-	printf("Before calling thinking function2\n");
+	printf("after calling thinking function2\n");
 	pthread_mutex_unlock(&philo->donner->afficher);
 }
 
@@ -66,7 +66,7 @@ void	eating(t_mouvmt *philo)
 }
 
 
-int main(void)
+/* int main(void)
 {
     t_donnee donner;
     t_mouvmt philo;
@@ -102,3 +102,4 @@ int main(void)
 
     return 0;
 }
+ */
