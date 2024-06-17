@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 01:22:22 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 15:34:15 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:37:58 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 void	for_one_philo(t_mouvmt *philo)
 {
-	uint64_t time;
+	uint64_t	time;
 
 	time = time_in_milis();
 	pthread_mutex_lock(&philo->right_fork);
