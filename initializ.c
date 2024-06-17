@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:26:43 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/14 05:04:29 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/17 06:02:09 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 t_donnee	*init(int ac, char **av)
 {
-	t_donnee	*data;
+	t_donnee	*donner;
 
 	if (ac < 5 || ac > 6)
 		return (NULL);
-	data = malloc(sizeof(t_donnee));
-	if (!data)
+	donner = malloc(sizeof(t_donnee));
+	if (!donner)
 		return (NULL);
-	data->finish = 0;
-	data->num_of_philosophers = atoi(av[1]);
-	data->time_to_start = time_in_ms();
-	data->death_statu = 0;
-	data->time_to_die = atoi(av[2]);
-	data->time_to_eat = atoi(av[2]);
-	data->time_to_sleep = atoi(av[4]);
+	donner->finish = 0;
+	donner->num_of_philosophers = atoi(av[1]);
+	donner->time_to_start = time_in_milis();
+	donner->death_statu = 0;
+	donner->time_to_die = atoi(av[2]);
+	donner->time_to_eat = atoi(av[2]);
+	donner->time_to_sleep = atoi(av[4]);
 	if (ac == 6)
-		data->max_food_to_eat = (atoi(av[5]) * data->num_of_philosophers);
+		donner->max_food_to_eat = (atoi(av[5]) * donner->num_of_philosophers);
 	else
-		data->max_food_to_eat = -1;
-	pthread_mutex_init(&(data->afficher), NULL);
-	pthread_mutex_init(&(data->verify_if_death), NULL);
-	pthread_mutex_init(&(data->food_to_eat), NULL);
-	pthread_mutex_init(&(data->time), NULL);
-	return (data);
+		donner->max_food_to_eat = -1;
+	pthread_mutex_init(&(donner->afficher), NULL);
+	pthread_mutex_init(&(donner->verify_if_death), NULL);
+	pthread_mutex_init(&(donner->food_to_eat), NULL);
+	pthread_mutex_init(&(donner->time), NULL);
+	return (donner);
 }
 
 t_mouvmt	*creat_philo(char **av, t_donnee **donner)
@@ -76,3 +76,17 @@ void	initialization_philo(char **av, t_donnee **donner, t_list **list)
 		i++;
 	}
 }
+
+t_list	*list(void)
+{
+	t_list	*list;
+
+	list = (t_list *)malloc(sizeof(t_list));
+	if (list == NULL)
+		return (NULL);
+	list->begining = NULL;
+	list->end = NULL;
+	list->size = 0;
+	return (list);
+}
+
