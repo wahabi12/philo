@@ -6,23 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:19:11 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 15:12:29 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:39:25 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-/* void one_philo(t_philo *philo) {
-    uint64_t time = ft_gettime_millisec();
-
-    // Lock the right fork unconditionally
-    pthread_mutex_lock(&philo->fork_right);
-
-    // Check if there's only one philosopher and print message
-    if (philo->data->numbers_of_philo == 1) {
-        printf("%llu %d has taken a fork\n", time - philo->data->start_time, philo->philo_number);
-    }
-} */
 
 void	for_one_philo(t_mouvmt *philo)
 {
@@ -34,21 +22,6 @@ void	for_one_philo(t_mouvmt *philo)
 		printf("%llu %d has taken a fork\n",
 			time - philo->donner->time_to_start, philo->num_philo);
 }
-
-/* void	for_one_philo(t_mouvmt *philo)
-{
-	uint64_t	cur_time;
-	uint64_t	time;
-
-	if (philo->donner->num_of_philosophers == 1)
-	{
-		pthread_mutex_lock(&philo->right_fork);
-		cur_time = time_in_milis();
-		time = cur_time - philo->donner->time_to_start;
-		printf("%llu %d has taken a fork\n",
-			time, philo->num_philo);
-	}
-} */
 
 void	philo_thinking(t_mouvmt *philo)
 {

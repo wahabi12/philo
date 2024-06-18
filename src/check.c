@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 05:03:45 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 14:54:10 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:16:56 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	valid_num(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+
 int	verify_valu(int ac, t_donnee *donner)
 {
 	if (ac == 6)
@@ -61,22 +62,3 @@ int	verify_valu(int ac, t_donnee *donner)
 	}
 	return (EXIT_SUCCESS);
 }
-
-/* int verify_valu(int ac, t_donnee *donner) {
-    if (ac == 6) {
-        if (donner->max_food_to_eat == 0 || donner->max_food_to_eat < 0) {
-            printf("%s : %s\n", STR_ERR_INPUT_POFLOW, STR_MAX_PHILOS);
-            return EXIT_FAILURE;
-        }
-    }
-    if (donner->num_of_philosophers > MAX_PHILOS || donner->num_of_philosophers <= 0) {
-        printf("%s : %s\n", STR_ERR_INPUT_POFLOW, STR_MAX_PHILOS);
-        return EXIT_FAILURE;
-    }
-    return EXIT_SUCCESS;
-}
-
-// Dummy implementations for the sake of completeness
-t_list *list_creation(t_donnee **donner, char **av) {
-    return NULL;
-} */

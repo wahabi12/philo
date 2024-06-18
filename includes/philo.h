@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 15:11:24 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:47:36 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,8 @@ void		*process(void *arg);
 void		join_threads(t_mouvmt *philo, t_list *list);
 int			create_and_start_threads(t_list *philo_list);
 int	main(int ac, char **av);
+int initialize_and_validate(int ac, char **av, t_donnee **donner, t_list **list);
+void simulatition_cleanup(t_donnee *donner, t_list *list);
+
+int	check(t_mouvmt *philo);
 #endif
