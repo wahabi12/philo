@@ -6,11 +6,31 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:16:47 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 09:52:30 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 10:13:25 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	free_msg(t_list *list)
+{
+	t_mouvmt	*cur;
+	t_mouvmt	*tmp;
+
+	if (!list || !list->begining)
+		return ;
+	cur = list->begining;
+	tmp = cur;
+	while (tmp != NULL)
+	{
+		cur = tmp->next;
+		free(tmp);
+		tmp = cur;
+		if (tmp == list->begining)
+			break ;
+	}
+	free(list);
+}
 
 void	cleanup_mutex(t_list *list)
 {
