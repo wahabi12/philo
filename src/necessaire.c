@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 07:45:51 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 01:20:00 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 10:18:09 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int	atoi(const char *str)
 }
 
 
-void message(t_mouvmt *philo, char *str)
+void	message(t_mouvmt *philo, char *str)
 {
-    uint64_t current_time;
+	uint64_t	current_time;
 
 	current_time = time_in_milis() - philo->donner->time_to_start;
 	if (last_verification(philo))
-		return;
-    printf("%llu %d %s\n", current_time, philo->num_philo, str);
+		return ;
+	printf("%llu %d %s\n", current_time, philo->num_philo, str);
 }
 
 

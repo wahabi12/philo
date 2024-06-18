@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:13:51 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 01:11:04 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 10:15:30 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ uint64_t	time_in_ms(void)
 	return ((curren_time.tv_sec * (uint64_t)1000000) + curren_time.tv_usec);
 }
 
-uint64_t time_in_milis(void)
+uint64_t	time_in_milis(void)
 {
 	return (time_in_ms() / 1000);
 }
