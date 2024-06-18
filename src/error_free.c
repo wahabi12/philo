@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:16:47 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 10:13:25 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:21:04 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	free_msg(t_list *list)
 {

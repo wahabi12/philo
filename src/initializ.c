@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:26:43 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 06:02:09 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:20:59 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 t_donnee	*init(int ac, char **av)
 {

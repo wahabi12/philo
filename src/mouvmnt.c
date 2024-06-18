@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 11:05:14 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 16:16:31 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:20:46 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	he_sleep(t_mouvmt *philo)
 {

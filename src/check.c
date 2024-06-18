@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 05:03:45 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 05:18:28 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:21:09 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	digit_num(const char *str)
 {

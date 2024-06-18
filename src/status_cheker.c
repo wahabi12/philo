@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 06:44:08 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 09:20:02 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:20:34 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	death_eating_status(t_mouvmt *philo, t_check_type type)
 {

@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 07:48:42 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 15:20:39 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:20:30 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	verify_statu_death(t_mouvmt *philo)
 {

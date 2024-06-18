@@ -6,11 +6,11 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 04:37:32 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 06:24:57 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:20:52 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	ajout_a_list(t_list **list, t_mouvmt **philo) // add_philo_to_list
 {
