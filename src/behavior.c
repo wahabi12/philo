@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 01:22:22 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/17 15:37:58 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 09:06:11 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,35 @@ void	philo_thinking(t_mouvmt *philo)
 		thinkig(philo);
 		ft_usleep(1);
 	}
+}
+
+void	aaction_process(t_mouvmt *philo)
+{
+	if (last_checking(philo) == 1)
+		return (1);
+	eating(philo);
+	if (last_checking(philo) == 1)
+		return (1);
+	he_sleep(philo);
+	if (last_checking(philo) == 1)
+		return (1);
+	thinkig(philo);
+}
+
+void	process(void *arg)
+{
+	t_mouvmt	*philo;
+
+	philo = (t_mouvmt *)arg;
+	philo_thinking(philo);
+	while (verify_statu_food(philo) != 0
+		&& verify_statu_death(philo) == 0
+		&& philo->donner->num_of_philosophers != 1)
+	{
+		aaction_process(philo);
+	}
+	for_one_philo(philo);
+	return (NULL);
 }
 
 
