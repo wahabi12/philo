@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:19:11 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 12:20:16 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:12:29 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ void	philo_thinking(t_mouvmt *philo)
 void	aaction_process(t_mouvmt *philo)
 {
 	if (last_checking(philo) == 1)
-		return (1);
+		return ;
 	eating(philo);
 	if (last_checking(philo) == 1)
-		return (1);
+		return ;
 	he_sleep(philo);
 	if (last_checking(philo) == 1)
-		return (1);
+		return ;
 	thinkig(philo);
 }
 
-void	process(void *arg)
+void	*process(void *arg)
 {
 	t_mouvmt	*philo;
 

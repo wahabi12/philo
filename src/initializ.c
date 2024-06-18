@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:26:43 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 12:20:59 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:06:22 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_donnee	*init(int ac, char **av)
 	return (donner);
 }
 
-t_mouvmt	*creat_philo(char **av, t_donnee **donner)
+t_mouvmt	*creat_philo(t_donnee **donner)
 {
 	t_mouvmt	*philo;
 
@@ -70,7 +70,7 @@ void	initialization_philo(char **av, t_donnee **donner, t_list **list)
 	i = 0;
 	while (i < atoi(av[1]))
 	{
-		philo = creat_philo(av, donner);
+		philo = creat_philo(donner);
 		philo->num_philo = i + 1;
 		ajout_a_list(list, &philo);
 		i++;

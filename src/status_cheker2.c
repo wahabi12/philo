@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 07:48:42 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 12:20:30 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:02:44 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	last_checking(t_mouvmt *philo)
 	if (!must_die && cur_time > philo->donner->time_to_die)
 	{
 		must_die = 1;
-		verify_death_philo(&philo, cur_time);
+		verify_death_philo(philo, cur_time);
 	}
 	pthread_mutex_unlock(&philo->donner->verify_if_death);
 	return (must_die);
