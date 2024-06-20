@@ -6,55 +6,19 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:13:51 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 20:41:40 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:10:41 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-/* uint64_t	time_in_ms(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-	return ((time.tv_sec * (uint64_t)1000000) + time.tv_usec);
-} */
-
-/* uint64_t	time_in_ms(void)
-{
-	struct timeval	curren_time;
-
-	gettimeofday(&curren_time, NULL);
-	return ((curren_time.tv_sec * (uint64_t)1000000) + curren_time.tv_usec);
-}
-
 uint64_t	time_in_milis(void)
 {
-	return (time_in_ms() / 1000);
-} */
+	struct timeval	current_time;
 
-/* void	ft_usleep(uint64_t ms)
-{
-	uint64_t	time;
-	time = time_in_milis() + ms;
-	while (time_in_milis() != time)
-		usleep(500);
-}
- */
-
-
-uint64_t	time_in_ms(void)
-{
-	struct timeval	curren_time;
-
-	gettimeofday(&curren_time, NULL);
-	return ((curren_time.tv_sec * (uint64_t)1000000) + curren_time.tv_usec);
-}
-
-uint64_t	time_in_milis(void)
-{
-	return (time_in_ms() / 1000);
+	gettimeofday(&current_time, NULL);
+	return ((current_time.tv_sec * (uint64_t)1000)
+		+ (current_time.tv_usec / 1000));
 }
 
 void	ft_usleep(uint64_t millsec)

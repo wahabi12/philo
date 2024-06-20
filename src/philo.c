@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:19:11 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 11:33:03 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:40:09 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,46 @@
 
 void	collec_thread(t_mouvmt *philo, t_list *list)
 {
-	while (philo)
+	t_mouvmt	*cur;
+
+	cur = philo;
+	while (cur != NULL)
 	{
-		if (pthread_join(philo->thread, NULL) != 0)
+		if (pthread_join(cur->thread, NULL) != 0)
+		{
 			error_msg("Error", list);
-		if (philo == list->begining)
 			break ;
-		philo = philo->prev;
+		}
+		if (cur == list->begining)
+			break ;
+		cur = cur->prev;
 	}
 }
 
 int	start_philos_threads(t_list *philo_list)
 {
-	t_mouvmt	*current;
-	t_mouvmt	*current2;
+	t_mouvmt	*cur;
+	t_mouvmt	*last_philo;
 
-	current = philo_list->begining;
-	while (current)
+	cur = philo_list->begining;
+	while (cur)
 	{
-		if (pthread_create(&(current->thread), NULL, &process,
-				(void *)current) != 0)
+		if (pthread_create(&(cur->thread), NULL, &process,
+				(void *)cur) != 0)
 			return (error_msg("Error", philo_list));
-		if (current == philo_list->end)
+		if (cur == philo_list->end)
 			break ;
-		current = current->next;
+		cur = cur->next;
 	}
-	current2 = current;
-	current = philo_list->begining;
-	while (current)
+	last_philo = cur;
+	cur = philo_list->begining;
+	while (cur)
 	{
-		if (last_checking(current))
+		if (last_checking(cur))
 			break ;
-		current = current->next;
+		cur = cur->next;
 	}
-	collec_thread(current2, philo_list);
+	collec_thread(last_philo, philo_list);
 	return (0);
 }
 
@@ -79,59 +85,4 @@ void	philo_thinking(t_mouvmt *philo)
 	}
 }
 
-/* void	aaction_process(t_mouvmt *philo)
-{
-	if (last_checking(philo) == 1)
-		return ;
-	eating(philo);
-	if (last_checking(philo) == 1)
-		return ;
-	he_sleep(philo);
-	if (last_checking(philo) == 1)
-		return ;
-	thinkig(philo);
-}
-
-void	*process(void *arg)
-{
-	t_mouvmt	*philo;
-
-	philo = (t_mouvmt *)arg;
-	philo_thinking(philo);
-	while (death_eating_status(philo, CHECK_MEALS_EATEN) != 0
-		&& death_eating_status(philo, CHECK_DEATH_STATUS) == 0
-		&& philo->donner->num_of_philosophers != 1)
-	{
-		aaction_process(philo);
-	}
-	for_one_philo(philo);
-	return (NULL);
-}
- */
-
-void	*process(void *arg)
-{
-	t_mouvmt	*philo;
-
-	philo = (t_mouvmt *)arg;
-	philo_thinking(philo);
-	while (death_eating_status(philo, CHECK_MEALS_EATEN) != 0
-		&& death_eating_status(philo, CHECK_DEATH_STATUS) == 0
-		&& (philo->donner->num_of_philosophers != 1))
-	{
-		if (last_checking(philo) == 1)
-			return (NULL);
-		eating(philo);
-		if (last_checking(philo) == 1)
-			return (NULL);
-		he_sleep(philo);
-		if (last_checking(philo) == 1)
-			return (NULL);
-		thinkig(philo);
-		if (last_checking(philo) == 1)
-			return (NULL);
-	}
-	for_one_philo(philo);
-	return (arg);
-}
 

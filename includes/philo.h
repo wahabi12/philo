@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 11:34:16 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:10:13 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef enum s_check_type
 	CHECK_MEALS_EATEN
 }t_check_type;
 
-uint64_t	time_in_ms(void);
+
 uint64_t	time_in_milis(void);
 t_mouvmt	*creat_philo(t_donnee **donner);
 t_donnee	*init(int ac, char **av);
@@ -93,8 +93,8 @@ int			initialize_and_validate(int ac, char **av,
 int			verify_valu(int ac, t_donnee *donner);
 int			error_msg(const char *string, t_list *list);
 int			last_checking(t_mouvmt *philo);
-/* int			verify_statu_death(t_mouvmt *philo);
-int			verify_statu_food(t_mouvmt *philo); */
+int			death_eating_status(t_mouvmt *philo, t_check_type type);
+int			perfom_action(t_mouvmt *philo, void (*action)(t_mouvmt *));
 int			verify_mx_food(t_mouvmt *philo);
 int			atoi(const char *str);
 int			digit_num(const char *str);
@@ -114,10 +114,8 @@ void		ajout_a_list(t_list **list, t_mouvmt **philo);
 void		set_left_fork(t_list *list);
 void		for_one_philo(t_mouvmt *philo);
 void		philo_thinking(t_mouvmt *philo);
-void		aaction_process(t_mouvmt *philo);
 void		*process(void *arg);
 void		collec_thread(t_mouvmt *philo, t_list *list);
 void		simulatition_cleanup(t_donnee *donner, t_list *list);
-int	death_eating_status(t_mouvmt *philo, t_check_type type);
 
 #endif

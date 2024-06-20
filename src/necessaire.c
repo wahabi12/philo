@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 07:45:51 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 11:10:57 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:11:48 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	atoi(const char *str)
 		if (result > INT_MAX / 10
 			|| (result == INT_MAX / 10 && (*str - '0') > INT_MAX % 10))
 		{
-			return (-1);	
+			return (-1);
 		}
 		result = result * 10 + (*str - '0');
 		str++;
@@ -51,21 +51,3 @@ void	message(t_mouvmt *philo, char *str)
 		return ;
 	printf("%llu %d %s\n", current_time, philo->num_philo, str);
 }
-
-
-/* void message(t_mouvmt *philo, char *str)
-{
-    uint64_t curren_time = time_in_milis() - philo->donner->time_to_start;
-
-    if (philo->donner->death_statu)
-        return;
-
-    printf("%llu %d %s\n", curren_time, philo->num_philo, str);
-}
- */
-/* void	lock_affich_message(t_mouvmt *philo, char msg)
-{
-	pthread_mutex_lock(&philo->donner->afficher);
-	message(philo, message);
-	pthread_mutex_unlock(&philo->donner->afficher);
-} */
