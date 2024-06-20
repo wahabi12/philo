@@ -6,42 +6,51 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 07:48:42 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 21:19:27 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:58:14 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	verify_statu_death(t_mouvmt *philo)
+int	death_eating_status(t_mouvmt *philo, t_check_type type)
 {
-	int	status;
+	int				result;
+	pthread_mutex_t	*mutex;
 
-	pthread_mutex_lock(&philo->donner->verify_if_death);
-	status = philo->donner->death_statu;
-	pthread_mutex_unlock(&philo->donner->verify_if_death);
-	return (status != 0);
-}
-
-int	verify_statu_food(t_mouvmt *philo)
-{
-	int	status;
-
-	pthread_mutex_lock(&philo->donner->food_to_eat);
-	status = philo->donner->max_food_to_eat;
-	pthread_mutex_unlock(&philo->donner->food_to_eat);
-	return (status != 0);
+	result = 0;
+	if (type == CHECK_DEATH_STATUS)
+	{
+		mutex = &philo->donner->verify_if_death;
+		pthread_mutex_lock(mutex);
+		result = philo->donner->death_statu;
+		pthread_mutex_unlock(mutex);
+	}
+	if (type == CHECK_MEALS_EATEN)
+	{
+		mutex = &philo->donner->food_to_eat;
+		pthread_mutex_lock(mutex);
+		result = philo->donner->max_food_to_eat;
+		pthread_mutex_unlock(mutex);
+	}
+	if (result == 0)
+		return (0);
+	else
+		return (1);
 }
 
 int	verify_mx_food(t_mouvmt *philo)
 {
 	int	food_to_eat;
-	int	eat_more;
+	int	max_food_to_eat;
 
 	pthread_mutex_lock(&philo->donner->food_to_eat);
 	food_to_eat = philo->eating_time;
-	eat_more = (food_to_eat < philo->donner->max_food_to_eat);
+	max_food_to_eat = philo->donner->max_food_to_eat;
 	pthread_mutex_unlock(&philo->donner->food_to_eat);
-	return (eat_more);
+	if (food_to_eat >= max_food_to_eat)
+		return (0);
+	else
+		return (1);
 }
 
 void	verify_death_philo(t_mouvmt *philo, uint64_t current_time)
@@ -79,26 +88,59 @@ void	verify_death_philo(t_mouvmt *philo, uint64_t current_time)
 	pthread_mutex_unlock(&philo->donner->verify_if_death);
 } */
 
+
 int	last_checking(t_mouvmt *philo)
 {
-	uint16_t	cur_time;
-	int			must_die;
+	uint64_t	time;
+	uint64_t	current_time;
 
-	must_die = 0;
 	pthread_mutex_lock(&philo->donner->time);
-	cur_time = time_in_milis() - philo->time_to_start;
+	time = time_in_milis() - philo->time_to_start;
 	pthread_mutex_unlock(&philo->donner->time);
+	current_time = time_in_milis() - philo->donner->time_to_start;
 	pthread_mutex_lock(&philo->donner->verify_if_death);
-	if (philo->eating_time >= philo->donner->max_food_to_eat)
+	if (death_eating_status(philo, CHECK_MEALS_EATEN) == 0 && philo->donner->death_statu == 0)
 	{
-		must_die = 1;
-		philo->donner->death_statu = 0;
+		philo->donner->death_statu = 1;
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
+		return (1);
 	}
-	if (!must_die && cur_time > philo->donner->time_to_die)
+	if (time > philo->donner->time_to_die)
+		verify_death_philo(philo, current_time);
+	if (philo->donner->death_statu == 1)
 	{
-		must_die = 1;
-		verify_death_philo(philo, cur_time);
+	
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
+		return (1);
 	}
 	pthread_mutex_unlock(&philo->donner->verify_if_death);
-	return (must_die);
+	return (0);
 }
+
+/* int	last_checking(t_mouvmt *philo)
+{
+	uint64_t	time;
+	uint64_t	current_time;
+
+	pthread_mutex_lock(&philo->donner->time);
+	time = time_in_milis() - philo->time_to_start;
+	pthread_mutex_unlock(&philo->donner->time);
+	current_time = time_in_milis() - philo->donner->time_to_start;
+	pthread_mutex_lock(&philo->donner->verify_if_death);
+	if (death_eating_status(philo, CHECK_MEALS_EATEN) == 0 && philo->donner->death_statu == 0)
+	{
+		philo->donner->death_statu = 1;
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
+		return (1);
+	}
+	if (time > philo->donner->time_to_die)
+		verify_death_philo(philo, current_time);
+	if (philo->donner->death_statu == 1)
+	{
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->donner->verify_if_death);
+	return (0);
+} */
+

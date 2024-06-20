@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 22:47:36 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:12:06 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_donnee
 	int					max_food_to_eat;
 	int					death_statu;
 	int					num_of_philosophers;
+	int					id;
 }	t_donnee;
 
 typedef struct s_mouvmt
@@ -59,6 +60,7 @@ typedef struct s_mouvmt
 	int					eating_time;
 	int					num_philo;
 	int					eating_statu;
+	int					id;
 	struct s_mouvmt		*next;
 	struct s_mouvmt		*prev;
 }	t_mouvmt;
@@ -84,11 +86,15 @@ t_donnee	*init(int ac, char **av);
 t_list		*list_initializ(void);
 t_list		*list_creation(char **av, t_donnee **donner);
 t_list		*list(void);
+int			create_and_start_threads(t_list *philo_list);
+int			main(int ac, char **av);
+int			initialize_and_validate(int ac, char **av,
+				t_donnee **donner, t_list **list);
 int			verify_valu(int ac, t_donnee *donner);
 int			error_msg(const char *string, t_list *list);
 int			last_checking(t_mouvmt *philo);
-int			verify_statu_death(t_mouvmt *philo);
-int			verify_statu_food(t_mouvmt *philo);
+/* int			verify_statu_death(t_mouvmt *philo);
+int			verify_statu_food(t_mouvmt *philo); */
 int			verify_mx_food(t_mouvmt *philo);
 int			atoi(const char *str);
 int			digit_num(const char *str);
@@ -111,10 +117,7 @@ void		philo_thinking(t_mouvmt *philo);
 void		aaction_process(t_mouvmt *philo);
 void		*process(void *arg);
 void		join_threads(t_mouvmt *philo, t_list *list);
-int			create_and_start_threads(t_list *philo_list);
-int	main(int ac, char **av);
-int initialize_and_validate(int ac, char **av, t_donnee **donner, t_list **list);
-void simulatition_cleanup(t_donnee *donner, t_list *list);
+void		simulatition_cleanup(t_donnee *donner, t_list *list);
+int	death_eating_status(t_mouvmt *philo, t_check_type type);
 
-int	check(t_mouvmt *philo);
 #endif

@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 05:03:45 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 21:16:56 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 08:46:43 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	valid_num(int argc, char **argv)
 	}
 	return (EXIT_SUCCESS);
 }
-
 
 int	verify_valu(int ac, t_donnee *donner)
 {

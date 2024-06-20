@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:19:11 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 21:39:25 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:40:39 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	philo_thinking(t_mouvmt *philo)
 	}
 }
 
-void	aaction_process(t_mouvmt *philo)
+/* void	aaction_process(t_mouvmt *philo)
 {
 	if (last_checking(philo) == 1)
 		return ;
@@ -58,8 +58,8 @@ void	*process(void *arg)
 
 	philo = (t_mouvmt *)arg;
 	philo_thinking(philo);
-	while (verify_statu_food(philo) != 0
-		&& verify_statu_death(philo) == 0
+	while (death_eating_status(philo, CHECK_MEALS_EATEN) != 0
+		&& death_eating_status(philo, CHECK_DEATH_STATUS) == 0
 		&& philo->donner->num_of_philosophers != 1)
 	{
 		aaction_process(philo);
@@ -67,7 +67,31 @@ void	*process(void *arg)
 	for_one_philo(philo);
 	return (NULL);
 }
+ */
 
+void	*process(void *arg)
+{
+	t_mouvmt	*philo;
 
-
+	philo = (t_mouvmt *)arg;
+	philo_thinking(philo);
+	while (death_eating_status(philo, CHECK_MEALS_EATEN) != 0
+		&& death_eating_status(philo, CHECK_DEATH_STATUS) == 0
+		&& (philo->donner->num_of_philosophers != 1))
+	{
+		if (last_checking(philo) == 1)
+			return (NULL);
+		eating(philo);
+		if (last_checking(philo) == 1)
+			return (NULL);
+		he_sleep(philo);
+		if (last_checking(philo) == 1)
+			return (NULL);
+		thinkig(philo);
+		if (last_checking(philo) == 1)
+			return (NULL);
+	}
+	for_one_philo(philo);
+	return (arg);
+}
 

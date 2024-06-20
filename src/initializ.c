@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:26:43 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 15:06:22 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:52:26 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_donnee	*init(int ac, char **av)
 	donner->time_to_start = time_in_milis();
 	donner->death_statu = 0;
 	donner->time_to_die = atoi(av[2]);
-	donner->time_to_eat = atoi(av[2]);
+	donner->time_to_eat = atoi(av[3]);
 	donner->time_to_sleep = atoi(av[4]);
 	if (ac == 6)
 		donner->max_food_to_eat = (atoi(av[5]) * donner->num_of_philosophers);
