@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:16:47 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 15:17:23 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:12:57 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	cleanup_mutex(t_list *list)
 	}
 }
 
-int error_msg(const char *string, t_list *list)
+int	error_msg(const char *string, t_list *list)
 {
 	printf("%s\n", string);
 	cleanup_mutex(list);

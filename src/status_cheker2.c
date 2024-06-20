@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 07:48:42 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 09:58:14 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:04:35 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int	last_checking(t_mouvmt *philo)
 	pthread_mutex_unlock(&philo->donner->time);
 	current_time = time_in_milis() - philo->donner->time_to_start;
 	pthread_mutex_lock(&philo->donner->verify_if_death);
-	if (death_eating_status(philo, CHECK_MEALS_EATEN) == 0 && philo->donner->death_statu == 0)
+	if (death_eating_status(philo, CHECK_MEALS_EATEN) == 0
+		&& philo->donner->death_statu == 0)
 	{
 		philo->donner->death_statu = 1;
 		pthread_mutex_unlock(&philo->donner->verify_if_death);
@@ -109,7 +110,6 @@ int	last_checking(t_mouvmt *philo)
 		verify_death_philo(philo, current_time);
 	if (philo->donner->death_statu == 1)
 	{
-	
 		pthread_mutex_unlock(&philo->donner->verify_if_death);
 		return (1);
 	}

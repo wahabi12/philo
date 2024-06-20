@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 09:12:06 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:34:16 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_donnee	*init(int ac, char **av);
 t_list		*list_initializ(void);
 t_list		*list_creation(char **av, t_donnee **donner);
 t_list		*list(void);
-int			create_and_start_threads(t_list *philo_list);
+int			start_philos_threads(t_list *philo_list);
 int			main(int ac, char **av);
 int			initialize_and_validate(int ac, char **av,
 				t_donnee **donner, t_list **list);
@@ -116,7 +116,7 @@ void		for_one_philo(t_mouvmt *philo);
 void		philo_thinking(t_mouvmt *philo);
 void		aaction_process(t_mouvmt *philo);
 void		*process(void *arg);
-void		join_threads(t_mouvmt *philo, t_list *list);
+void		collec_thread(t_mouvmt *philo, t_list *list);
 void		simulatition_cleanup(t_donnee *donner, t_list *list);
 int	death_eating_status(t_mouvmt *philo, t_check_type type);
 

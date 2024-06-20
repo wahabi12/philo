@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:03 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 09:57:06 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:32:45 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	initialize_and_validate(int ac, char **av, t_donnee **donner, t_list **list)
 
 void	simulatition_cleanup(t_donnee *donner, t_list *list)
 {
-	create_and_start_threads(list);
+	start_philos_threads(list);
 	cleanup_mutex(list);
 	free(donner);
 }

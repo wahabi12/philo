@@ -5,7 +5,7 @@ NAME = philo
 SRCS = ./main.c src/temps.c src/status_cheker2.c \
        src/necessaire.c src/mouvmnt.c src/list.c \
        src/initializ.c src/error_free.c \
-       src/check.c src/behavior.c src/philo.c
+       src/check.c src/philo.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
