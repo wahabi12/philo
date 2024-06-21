@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 17:10:13 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:16:37 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,5 @@ void		philo_thinking(t_mouvmt *philo);
 void		*process(void *arg);
 void		collec_thread(t_mouvmt *philo, t_list *list);
 void		simulatition_cleanup(t_donnee *donner, t_list *list);
-
+uint64_t	ft_gettime_microsec(void);
 #endif

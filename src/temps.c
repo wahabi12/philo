@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:13:51 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 17:10:41 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:48:54 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 uint64_t	time_in_milis(void)
 {
-	struct timeval	current_time;
+	struct timeval	tv;
 
-	gettimeofday(&current_time, NULL);
-	return ((current_time.tv_sec * (uint64_t)1000)
-		+ (current_time.tv_usec / 1000));
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 void	ft_usleep(uint64_t millsec)

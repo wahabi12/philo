@@ -6,13 +6,14 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:03 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 11:32:45 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:34:02 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/philo.h"
 
-int	initialize_and_validate(int ac, char **av, t_donnee **donner, t_list **list)
+int	initialize_and_validate(int ac, char **av,
+	t_donnee **donner, t_list **list)
 {
 	if (valid_num(ac, av) != 0)
 		return (1);

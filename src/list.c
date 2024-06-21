@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 04:37:32 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/18 12:20:52 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:23:50 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,19 @@ t_list	*list_creation(char **av, t_donnee **donner)
 	list = list_initializ();
 	initialization_philo(av, donner, &list);
 	set_left_fork(list);
+	return (list);
+}
+
+t_list	*list(void)
+{
+	t_list	*list;
+
+	list = (t_list *)malloc(sizeof(t_list));
+	if (list == NULL)
+		return (NULL);
+	list->begining = NULL;
+	list->end = NULL;
+	list->size = 0;
 	return (list);
 }
 
