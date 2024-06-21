@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 05:03:45 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/21 14:36:50 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:59:54 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	digit_num(const char *str)
 	return (0);
 }
 
-/* int	valid_num(int argc, char **argv)
+int	valid_num(int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)
 	{
@@ -41,26 +41,7 @@ int	digit_num(const char *str)
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
-} */
-
-int valid_num(int argc, char **argv) {
-    if (argc < 5 || argc > 6) {
-        printf("%s : %s\n", STR_ERR_INPUT_DIGIT, argv[1]);
-        return (EXIT_FAILURE);
-    }
-    if ((digit_num(argv[1]) == 1) || (digit_num(argv[2]) == 1)) {
-        printf("%s : %s\n", STR_ERR_INPUT_POFLOW, STR_MAX_PHILOS);
-        return (EXIT_FAILURE);
-    }
-    if ((digit_num(argv[3]) == 1) || (digit_num(argv[4]) == 1)) {
-        printf("%s : %s\n", STR_ERR_INPUT_POFLOW, STR_MAX_PHILOS);
-        return (EXIT_FAILURE);
-    }
-    printf("Valid arguments: num_of_philosophers=%s, time_to_die=%s, time_to_eat=%s, time_to_sleep=%s\n",
-           argv[1], argv[2], argv[3], argv[4]);
-    return (EXIT_SUCCESS);
 }
-
 
 int	verify_valu(int ac, t_donnee *donner)
 {

@@ -6,13 +6,13 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 04:37:32 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 17:23:50 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:51:51 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	ajout_a_list(t_list **list, t_mouvmt **philo) // add_philo_to_list
+void	ajout_a_list(t_list **list, t_mouvmt **philo)
 {
 	t_list		*lst;
 	t_mouvmt	*nw_philo;
@@ -86,12 +86,3 @@ t_list	*list(void)
 	list->size = 0;
 	return (list);
 }
-
-
-/* void print_list(t_list *list) {
-    if (list == NULL || list->size == 0) {
-        printf("Empty list\n");
-        return;
-    }
-}
- */

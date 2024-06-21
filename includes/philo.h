@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:14:07 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/21 15:16:37 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:05:49 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@
 
 typedef struct s_donnee
 {
-	uint64_t			time_to_start;
-	pthread_mutex_t		afficher;
-	pthread_mutex_t		verify_if_death;
-	pthread_mutex_t		food_to_eat;
-	pthread_mutex_t		eating;
-	pthread_mutex_t		time;
-	uint64_t			time_to_sleep;
-	uint64_t			time_to_die;
-	uint64_t			time_to_eat;
-	int					finish;
-	int					max_food_to_eat;
-	int					death_statu;
-	int					num_of_philosophers;
-	int					id;
+	time_t			time_to_start;
+	pthread_mutex_t	afficher;
+	pthread_mutex_t	verify_if_death;
+	pthread_mutex_t	food_to_eat;
+	pthread_mutex_t	eating;
+	pthread_mutex_t	time;
+	time_t			time_to_sleep;
+	time_t			time_to_die;
+	time_t			time_to_eat;
+	int				finish;
+	int				max_food_to_eat;
+	int				death_statu;
+	int				num_of_philosophers;
+	int				id;
 }	t_donnee;
 
 typedef struct s_mouvmt
@@ -53,10 +53,10 @@ typedef struct s_mouvmt
 	pthread_mutex_t		right_fork;
 	pthread_mutex_t		*left_fork;
 	pthread_t			thread;
-	uint64_t			time_to_sleep;
-	uint64_t			time_to_die;
-	uint64_t			time_to_eat;
-	uint64_t			time_to_start;
+	time_t				time_to_sleep;
+	time_t				time_to_die;
+	time_t				time_to_eat;
+	time_t				time_to_start;
 	int					eating_time;
 	int					num_philo;
 	int					eating_statu;
@@ -78,11 +78,9 @@ typedef enum s_check_type
 	CHECK_MEALS_EATEN
 }t_check_type;
 
-
-uint64_t	time_in_milis(void);
+time_t		time_in_milis(void);
 t_mouvmt	*creat_philo(t_donnee **donner);
 t_donnee	*init(int ac, char **av);
-
 t_list		*list_initializ(void);
 t_list		*list_creation(char **av, t_donnee **donner);
 t_list		*list(void);
@@ -107,8 +105,8 @@ void		hold_forks(t_mouvmt *philo);
 void		thinkig(t_mouvmt *philo);
 void		he_sleep(t_mouvmt *philo);
 void		message(t_mouvmt *philo, char *str);
-void		verify_death_philo(t_mouvmt *philo, uint64_t cur_time);
-void		ft_usleep(uint64_t ms);
+void		verify_death_philo(t_mouvmt *philo, time_t cur_time);
+void		ft_usleep(time_t ms);
 void		eating(t_mouvmt *philo);
 void		ajout_a_list(t_list **list, t_mouvmt **philo);
 void		set_left_fork(t_list *list);
@@ -117,5 +115,6 @@ void		philo_thinking(t_mouvmt *philo);
 void		*process(void *arg);
 void		collec_thread(t_mouvmt *philo, t_list *list);
 void		simulatition_cleanup(t_donnee *donner, t_list *list);
-uint64_t	ft_gettime_microsec(void);
+void		free_extra_list(t_list *list);
+
 #endif

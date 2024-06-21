@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:19:11 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 16:40:09 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:03:13 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,14 @@ int	start_philos_threads(t_list *philo_list)
 	return (0);
 }
 
-
 void	for_one_philo(t_mouvmt *philo)
 {
-	uint64_t	time;
+	time_t	time;
 
 	time = time_in_milis();
 	pthread_mutex_lock(&philo->right_fork);
 	if (philo->donner->num_of_philosophers == 1)
-		printf("%llu %d has taken a fork\n",
+		printf("%lu %d has taken a fork\n",
 			time - philo->donner->time_to_start, philo->num_philo);
 }
 
@@ -84,5 +83,3 @@ void	philo_thinking(t_mouvmt *philo)
 		ft_usleep(1);
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:16:47 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 11:12:57 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:48:44 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ void	free_msg(t_list *list)
 	free(list);
 }
 
+void	free_extra_list(t_list *list)
+{
+	size_t		i;
+	t_mouvmt	*tmp;
+
+	i = 0;
+	while (i < list->size)
+	{
+		tmp = list->begining;
+		list->begining = list->begining->next;
+		free(tmp);
+		i++;
+	}
+	free(list);
+}
+
 void	cleanup_mutex(t_list *list)
 {
 	t_mouvmt	*curr_philo;
@@ -52,6 +68,7 @@ void	cleanup_mutex(t_list *list)
 		pthread_mutex_destroy(&list->begining->donner->verify_if_death);
 		pthread_mutex_destroy(&list->begining->donner->food_to_eat);
 	}
+	free_extra_list(list);
 }
 
 int	error_msg(const char *string, t_list *list)

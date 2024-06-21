@@ -6,7 +6,7 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 10:26:43 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/20 17:44:24 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:57:38 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ void	initialization_philo(char **av, t_donnee **donner, t_list **list)
 		i++;
 	}
 }
-

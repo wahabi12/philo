@@ -6,20 +6,40 @@
 /*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 16:33:17 by blatifat          #+#    #+#             */
-/*   Updated: 2024/06/21 15:44:59 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:57:17 by blatifat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-/* int	perfom_action(t_mouvmt *philo, void (*action)(t_mouvmt *))
+int	last_checking(t_mouvmt *philo)
 {
-	if (last_checking(philo) == 1)
+	time_t	time;
+	time_t	current_time;
+
+	pthread_mutex_lock(&philo->donner->time);
+	time = time_in_milis() - philo->time_to_start;
+	pthread_mutex_unlock(&philo->donner->time);
+	current_time = time_in_milis() - philo->donner->time_to_start;
+	pthread_mutex_lock(&philo->donner->verify_if_death);
+	if (death_eating_status(philo, CHECK_MEALS_EATEN) == 0
+		&& philo->donner->death_statu == 0)
+	{
+		philo->donner->death_statu = 1;
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
 		return (1);
-	action(philo);
-	return (last_checking(philo));
+	}
+	if (time > philo->donner->time_to_die)
+		verify_death_philo(philo, current_time);
+	if (philo->donner->death_statu == 1)
+	{
+		pthread_mutex_unlock(&philo->donner->verify_if_death);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->donner->verify_if_death);
+	return (0);
 }
- */
+
 void	*process(void *arg)
 {
 	t_mouvmt	*philo;
